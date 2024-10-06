@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+typedef struct {
+    char name[50];
+    int id;
+    float baholar[5];
+    int num_courses;
+} Student;
+
+float calculateAverage(Student s) {
+    float sum = 0.0;
+    for (int i = 0; i < s.num_courses; i++) {
+        sum += s.baholar[i];
+    }
+    return s.num_courses > 0 ? sum / s.num_courses : 0;
+}
+
+int main() {
+    Student student;
+
+    printf("Talabaning ismini kiriting: ");
+    fgets(student.name, sizeof(student.name), stdin);
+
+    printf("Talabaning ID raqamini kiriting: ");
+    scanf("%d", &student.id);
+
+    printf("Darslar sonini kiriting: ");
+    scanf("%d", &student.num_courses);
+
+    for (int i = 0; i < student.num_courses; i++) {
+        printf("Dars %d bahosini kiriting: ", i + 1);
+        scanf("%f", &student.baholar[i]);
+    }
+
+    float average = calculateAverage(student);
+    printf("Talabaning o'rtacha bahosi: %.2f\n", average);
+
+    return 0;
+}
