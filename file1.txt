@@ -1,0 +1,59 @@
+#include <stdio.h>
+
+void toplama(double a, double b);
+void ayirish(double a, double b);
+void kopaytirish(double a, double b);
+void bolish(double a, double b);
+
+int main() {
+    double a, b;
+    char amal;
+
+    printf("Birinchi sonni kiriting: ");
+    scanf("%lf", &a);
+    printf("Ikkinchi sonni kiriting: ");
+    scanf("%lf", &b);
+
+    printf("Amalni kiriting (+, -, *, /): ");
+    scanf(" %c", &amal);
+
+    switch (amal) {
+        case '+':
+            toplama(a, b);
+            break;
+        case '-':
+            ayirish(a, b);
+            break;
+        case '*':
+            kopaytirish(a, b);
+            break;
+        case '/':
+            if (b != 0) {
+                bolish(a, b);
+            } else {
+                printf("Nolga bo'lish mumkin emas.\n");
+            }
+            break;
+        default:
+            printf("Noto'g'ri amal.\n");
+            break;
+    }
+
+    return 0;
+}
+
+void toplama(double a, double b) {
+    printf("Natija: %.2lf\n", a + b);
+}
+
+void ayirish(double a, double b) {
+    printf("Natija: %.2lf\n", a - b);
+}
+
+void kopaytirish(double a, double b) {
+    printf("Natija: %.2lf\n", a * b);
+}
+
+void bolish(double a, double b) {
+    printf("Natija: %.2lf\n", a / b);
+}
