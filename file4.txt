@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_USERS 100
+
+typedef struct {
+    char name[50];
+    char email[50];
+    char password[20];
+} User;
+
+User userDatabase[MAX_USERS];
+int userCount = 0;
+
+void registerUser() {
+    if (userCount >= MAX_USERS) {
+        printf("Ro'yxat to'liq.\n");
+        return;
+    }
+
+    User newUser;
+
+    printf("Ismingizni kiriting: ");
+    fgets(newUser.name, sizeof(newUser.name), stdin);
+    newUser.name[strcspn(newUser.name, "\n")] = '\0';
+
+    printf("Emailingizni kiriting: ");
+    fgets(newUser.email, sizeof(newUser.email), stdin);
+    newUser.email[strcspn(newUser.email, "\n")] = '\0';
+
+    printf("Parolingizni kiriting: ");
+    fgets(newUser.password, sizeof(newUser.password), stdin);
+    newUser.password[strcspn(newUser.password, "\n")] = '\0';
+
+    userDatabase[userCount++] = newUser;
+
+    printf("Ro'yxatdan o'tish muvaffaqiyatli!\n");
+}
+
+void displayUsers() {
+    if (userCount == 0) {
+        printf("Foydalanuvchilar ro'yxati bo'sh.\n");
+        return;
+    }
+
+    for (int i = 0; i < userCount; i++) {
+        printf("Foydalanuvchi %d:\n", i + 1);
+        printf("Ism: %s\n", userDatabase[i].name);
+        printf("Email: %s\n", userDatabase[i].email);
+        printf("-------------------------\n");
+    }
+}
+
+int main() {
+    int choice;
+
+    while (1) {
+        printf("1. Ro'yxatdan o'tish\n");
+        printf("2. Foydalanuvchilar ro'yxatini ko'rsatish\n");
+        printf("3. Chiqish\n");
+        printf("Tanlovingizni kiriting: ");
+        scanf("%d", &choice);
+        getchar(); 
+
+        switch (choice) {
+            case 1:
+                registerUser();
+                break;
+            case 2:
+                displayUsers();
+                break;
+            case 3:
+                return 0;
+            default:
+                printf("Noto'g'ri tanlov, qayta urinib ko'ring.\n");
+        }
+    }
+}
