@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+void drawTree() {
+    printf("        _\n");
+    printf("       /_\\\n");
+    printf("      /___\\\n");
+    printf("     /_____\\\n");
+    printf("    /_______\\\n");
+    printf("       ||\n");
+    printf("       ||\n");
+    printf("       ||\n");
+}
+
+int main() {
+    drawTree();
+    return 0;
+}
