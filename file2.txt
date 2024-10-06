@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+
+typedef struct {
+    int id;
+    char nomi[50];
+    float narxi;
+    int stok;
+} Mahsulot;
+
+void mahsulotQosh(Mahsulot *mahsulotlar, int *mahsulotSoni) {
+Mahsulot yangiMahsulot;
+printf("Mahsulot ID: ");
+scanf("%d", &yangiMahsulot.id);
+printf("Mahsulot Nomi: ");
+scanf("%s", yangiMahsulot.nomi);
+printf("Mahsulot Narxi: ");
+scanf("%f", &yangiMahsulot.narxi);
+printf("Mahsulot Stok Miqdori: ");
+scanf("%d", &yangiMahsulot.stok);
+
+mahsulotlar[*mahsulotSoni] = yangiMahsulot;
+(*mahsulotSoni)++;
+printf("Mahsulot muvaffaqiyatli qo'shildi.\n");
+}
+
+int main() {
+    Mahsulot mahsulotlar[100];
+    int mahsulotSoni = 0;
+
+    mahsulotQosh(mahsulotlar, &mahsulotSoni);
+    return 0;
+}
